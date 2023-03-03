@@ -1,0 +1,1047 @@
+{
+  "version": "2.1",
+  "templates": [
+    {
+      "categories": [
+        "Other"
+      ],
+      "description": "AdGuard Home is a network-wide software for blocking ads & tracking. After you set it up, it’ll cover ALL your home devices, and you don’t need any client-side software for that. With the rise of Internet-Of-Things and connected devices, it becomes more and more important to be able to control your whole network.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "label": "CONTEXT_PATH",
+          "name": "CONTEXT_PATH",
+          "set": "adguard home"
+        }
+      ],
+      "image": "adguard/adguardhome:latest",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/adguard.png",
+      "name": "adguard",
+      "platform": "linux",
+      "ports": [
+        "53:53/tcp",
+        "53:53/udp",
+        "67:67/udp",
+        "68:68/tcp",
+        "68:68/udp",
+        "80:80/tcp",
+        "443:443/tcp",
+        "853:853/tcp",
+        "3000:3000/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "Adguard",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/adguard/workdir",
+          "container": "/opt/adguardhome/work"
+        },
+        {
+          "bind": "/mnt/DOCKER/appdata/adguard/config",
+          "container": "/opt/adguardhome/conf"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Video",
+        "Music"
+      ],
+      "description": "Bazarr is a companion application to Sonarr and Radarr. It can manage and download subtitles based on your requirements. You define your preferences by TV show or movie and Bazarr takes care of everything for you.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "label": "TZ",
+          "name": "TZ"
+        }
+      ],
+      "image": "hotio/bazarr:release",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/bazarr.png",
+      "name": "Bazarr",
+      "platform": "linux",
+      "ports": [
+        "6767:6767/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "Bazarr",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/bazarr/config",
+          "container": "/config"
+        },
+        {
+          "bind": "/mnt/TV",
+          "container": "/tv"
+        },
+        {
+          "bind": "/mnt/MOVIES",
+          "container": "/movies"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Music"
+      ],
+      "description": "The purpose of beets is to get your music collection right once and for all. It catalogs your collection, automatically improving its metadata as it goes using the MusicBrainz database. Then it provides a bouquet of tools for manipulating and accessing your music.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        }
+      ],
+      "image": "linuxserver/beets:latest",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/beets-icon.png",
+      "name": "beets",
+      "platform": "linux",
+      "ports": [
+        "8337:8337/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "Beets",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/beets/config",
+          "container": "/config"
+        },
+        {
+          "bind": "/mnt/DOWNLOADS",
+          "container": "/downloads"
+        },
+        {
+          "bind": "/mnt/MUSIC",
+          "container": "/music"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "DNS",
+        "Tools"
+      ],
+      "description": "Duck DNS is a free service which will point a DNS (sub domains of duckdns.org) to an IP of your choice. The service is completely free, and doesn't require reactivation or forum posts to maintain its existence.",
+      "env": [
+        {
+          "label": "SUBDOMAINS",
+          "name": "SUBDOMAINS",
+          "set": ""
+        },
+        {
+          "label": "TOKEN",
+          "name": "TOKEN",
+          "set": ""
+        },
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        }
+      ],
+      "image": "linuxserver/duckdns:latest",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/duckdns.png",
+      "name": "duckdns",
+      "note": "<b>Configuration</b></br>First, go to duckdns site, register your subdomain and retrieve your token<br/>Then run the DOCKER create command above with your subdomain(s) and token<br/>It will update your IP with the DuckDNS service every 5 minutes",
+      "platform": "linux",
+      "restart_policy": "unless-stopped",
+      "title": "Duck DNS",
+      "type": 1
+    },
+    {
+      "categories": [
+        "Backup",
+        "Cloud",
+        "Other",
+        "Productivity",
+        "Tools"
+      ],
+      "description": "Free backup software to store encrypted backups online, Duplicati works with standard protocols like FTP, SSH, WebDAV as well as popular services like Microsoft OneDrive, Amazon Cloud Drive and S3, Google Drive, box.com, Mega, hubiC and many others.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        }
+      ],
+      "image": "linuxserver/duplicati:latest",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/duplicati-icon.png",
+      "name": "duplicati",
+      "platform": "linux",
+      "ports": [
+        "8200:8200/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "Duplicati",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/duplicati/config",
+          "container": "/config"
+        },
+        {
+          "bind": "/mnt/DOCKER/appdata/duplicati/tmp",
+          "container": "/tmp"
+        },
+        {
+          "bind": "/mnt/DOCKER/appdata/duplicati/backups",
+          "container": "/backups"
+        },
+        {
+          "bind": "/mnt/DOCKER/appdata/duplicati/source",
+          "container": "/source"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Video",
+        "Music",
+        "Photos"
+      ],
+      "description": "Emby organizes video, music, live TV, and photos from personal media libraries and streams them to smart TVs, streaming boxes and mobile devices. This container is packaged as a standalone emby Media Server.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "label": "TZ",
+          "name": "TZ"
+        }
+      ],
+      "image": "linuxserver/emby:latest",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/emby.png",
+      "name": "Emby",
+      "platform": "linux",
+      "ports": [
+        "8096:8096/tcp",
+        "8920:8920/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "Emby",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/emby/config",
+          "container": "/config"
+        },
+        {
+          "bind": "/mnt/TV",
+          "container": "/data/tvshows"
+        },
+        {
+          "bind": "/mnt/MOVIES",
+          "container": "/data/movies"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Other",
+        "Tools"
+      ],
+      "description": "Embystat is a personal web server that can calculate all kinds of statistics from your (local) Emby server. Just install this on your server and let him calculate all kinds of fun stuff.",
+      "image": "linuxserver/embystat:latest",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/embystat.png",
+      "name": "EmbyStat",
+      "note": "Access the ui at your-ip:6555. Follow the setup wizard on initial install. Then configure the required services.",
+      "platform": "linux",
+      "ports": [
+        "6555:6555/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "EmbyStat",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/embystat/config",
+          "container": "/config"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Music"
+      ],
+      "description": "Headphones is an automated music downloader for NZB and Torrent, written in Python. It supports SABnzbd, NZBget, Transmission, µTorrent and Blackhole.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        }
+      ],
+      "image": "linuxserver/headphones:latest",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/headphones-icon.png",
+      "name": "headphones",
+      "platform": "linux",
+      "ports": [
+        "8181:8181/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "Headphones",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/headphones/config",
+          "container": "/config"
+        },
+        {
+          "bind": "/mnt/DOWNLOADS",
+          "container": "/Downloads"
+        },
+        {
+          "bind": "/mnt/MUSIC",
+          "container": "/music"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Video"
+      ],
+      "description": "Headless installation of Kodi™ (formerly known as XBMC™), to enable library updates.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        }
+      ],
+      "image": "linuxserver/kodi-headless:latest",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/kodi-icon.png",
+      "name": "kodi-headless",
+      "platform": "linux",
+      "ports": [
+        "8880:8080/tcp",
+        "9777/udp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "Kodi Headless",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/kodi",
+          "container": "/config"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Downloaders",
+        "Music"
+      ],
+      "description": "Lidarr is a music collection manager for Usenet and BitTorrent users.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        }
+      ],
+      "image": "hotio/lidarr:release",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/lidarr.png",
+      "name": "lidarr",
+      "platform": "linux",
+      "ports": [
+        "8686:8686/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "Lidarr",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/lidarr/config",
+          "container": "/config"
+        },
+        {
+          "bind": "/mnt/DOWNLOADS",
+          "container": "/downloads"
+        },
+        {
+          "bind": "/mnt/MUSIC",
+          "container": "/music"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Other",
+        "Tools"
+      ],
+      "description": "An Enhanced drop in replacement for Mysql.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "label": "MYSQL_ROOT_PASSWORD",
+          "name": "MYSQL_ROOT_PASSWORD",
+          "set": ""
+        }
+      ],
+      "image": "linuxserver/mariadb:latest",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/mariadb-icon.png",
+      "name": "mariadb",
+      "platform": "linux",
+      "ports": [
+        "3306:3306/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "MariaDB",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/mariadb/config",
+          "container": "/config"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Music",
+        "Other",
+        "Tools"
+      ],
+      "description": "MusicBrainz is an open music encyclopedia that collects music metadata and makes it available to the public.",
+      "env": [
+        {
+          "label": "BRAINZCODE",
+          "name": "BRAINZCODE",
+          "set": ""
+        },
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        }
+      ],
+      "image": "linuxserver/musicbrainz:latest",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/musicbrainz-icon.png",
+      "name": "musicbrainz",
+      "platform": "linux",
+      "ports": [
+        "5000:5000/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "MusicBrainz",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/musicbrainz/config",
+          "container": "/config"
+        },
+        {
+          "bind": "/mnt/DOCKER/appdata/musicbrainz/data",
+          "container": "/data"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Downloaders"
+      ],
+      "description": "NZBGet is a usenet downloader, written in C++ and designed with performance in mind to achieve maximum download speed by using very little system resources. It supports all platforms including Windows, Mac, Linux and works on all devices including PC, NAS, WLAN routers and media players.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        }
+      ],
+      "image": "linuxserver/nzbget:latest",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/nzbget-icon.png",
+      "name": "nzbget",
+      "platform": "linux",
+      "ports": [
+        "6789:6789/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "NZBGet",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/nzbget/config",
+          "container": "/config"
+        },
+        {
+          "bind": "/mnt/DOWNLOADS",
+          "container": "/downloads"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Downloaders",
+        "Other",
+        "Tools"
+      ],
+      "description": "NZBHydra is a meta search for NZB indexers and the \"spiritual successor\" to NZBmegasearcH. It provides easy access to a number of raw and newznab based indexers.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        }
+      ],
+      "image": "linuxserver/nzbhydra2:latest",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/hydra-icon.png",
+      "name": "nzbhydra2",
+      "platform": "linux",
+      "ports": [
+        "5076:5076/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "NZBHydra 2",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/nzbhydra2/config",
+          "container": "/config"
+        },
+        {
+          "bind": "/mnt/DOWNLOADS",
+          "container": "/downloads"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Web",
+        "Proxy"
+      ],
+      "description": "Nginx is a web server with a strong focus on high concurrency, performance and low memory usage. It can also act as a reverse proxy server for HTTP, HTTPS, SMTP, POP3, and IMAP protocols, as well as a load balancer and an HTTP cache.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        }
+      ],
+      "image": "linuxserver/nginx:latest",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/nginx-icon.png",
+      "name": "nginx",
+      "platform": "linux",
+      "ports": [
+        "8088:80/tcp",
+        "4343:443/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "Nginx",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/nginx/config",
+          "container": "/config"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Downloaders",
+        "Other",
+        "Video",
+        "Tools"
+      ],
+      "description": "Ombi allows you to host your own Plex Request and user management system.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        }
+      ],
+      "image": "linuxserver/ombi:latest",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/ombi.png",
+      "name": "ombi",
+      "platform": "linux",
+      "ports": [
+        "3579:3579/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "Ombi",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/ombi/config",
+          "container": "/config"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Other",
+        "Tools"
+      ],
+      "description": "Overseerr is a free and open source software application for managing requests for your media library.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        }
+      ],
+      "image": "hotio/overseerr:latest",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/overseerr-icon.png",
+      "name": "Overseerr",
+      "platform": "linux",
+      "ports": [
+        "5055:5055/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "Overseerr",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/overseerr/config",
+          "container": "/config"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Video",
+        "Music",
+        "Photos"
+      ],
+      "description": "Your favorite movies, TV, music, web shows, podcasts, and more, all streamed to your favorite screens.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "label": "VERSION",
+          "name": "VERSION",
+          "set": "latest"
+        }
+      ],
+      "image": "linuxserver/plex:latest",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/plex-icon.png",
+      "name": "plex",
+      "network": "host",
+      "platform": "linux",
+      "restart_policy": "unless-stopped",
+      "title": "Plex",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/plex/config",
+          "container": "/config"
+        },
+        {
+          "bind": "/mnt/TV",
+          "container": "/tv"
+        },
+        {
+          "bind": "/mnt/MOVIES",
+          "container": "/movies"
+        },
+        {
+          "bind": "/mnt/MUSIC",
+          "container": "/music"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Downloaders",
+        "Video"
+      ],
+      "description": "Prowlarr is a indexer manager/proxy built on the popular arr .net/reactjs base stack to integrate with your various PVR apps. Prowlarr supports both Torrent Trackers and Usenet Indexers. It integrates seamlessly with Sonarr, Radarr, Lidarr, and Readarr offering complete management of your indexers with no per app Indexer setup required (we do it all).",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        }
+      ],
+      "image": "ghcr.io/linuxserver/prowlarr:develop",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/prowlarr.png",
+      "name": "prowlarr",
+      "platform": "linux",
+      "ports": [
+        "9696:9696/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "Prowlarr",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/prowlarr/config",
+          "container": "/config"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Downloaders",
+        "Video"
+      ],
+      "description": "Radarr - A fork of Sonarr to work with movies à la Couchpotato.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        }
+      ],
+      "image": "hotio/radarr:release",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/radarr.png",
+      "name": "radarr",
+      "platform": "linux",
+      "ports": [
+        "7878:7878/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "Radarr",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/radarr/config",
+          "container": "/config"
+        },
+        {
+          "bind": "/mnt/DOWNLOADS",
+          "container": "/downloads"
+        },
+        {
+          "bind": "/mnt/MOVIES",
+          "container": "/movies"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Downloaders"
+      ],
+      "description": "SABnzbd makes Usenet as simple and streamlined as possible by automating everything we can. All you have to do is add an .nzb. SABnzbd takes over from there, where it will be automatically downloaded, verified, repaired, extracted and filed away with zero human interaction.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        }
+      ],
+      "image": "linuxserver/sabnzbd:latest",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/sabnzbd-icon.png",
+      "name": "sabnzbd",
+      "platform": "linux",
+      "ports": [
+        "8181:8080/tcp",
+        "9191:9090/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "SABnzbd",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/sabnzbd/config",
+          "container": "/config"
+        },
+        {
+          "bind": "/mnt/DOWNLOADS",
+          "container": "/downloads"
+        },
+        {
+          "bind": "/mnt/DOWNLOADS/incomplete",
+          "container": "/incomplete-downloads"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Downloaders",
+        "Video"
+      ],
+      "description": "Sonarr (formerly NZBdrone) is a PVR for usenet and bittorrent users. It can monitor multiple RSS feeds for new episodes of your favorite shows and will grab, sort and rename them. It can also be configured to automatically upgrade the quality of files already downloaded when a better quality format becomes available.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        }
+      ],
+      "image": "hotio/sonarr:release",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/sonarr-icon.png",
+      "name": "sonarr",
+      "platform": "linux",
+      "ports": [
+        "8989:8989/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "Sonarr",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/sonarr/config",
+          "container": "/config"
+        },
+        {
+          "bind": "/mnt/DOCKER/appdata/sonarr/dev/rtc",
+          "container": "/dev/rtc"
+        },
+        {
+          "bind": "/mnt/TV",
+          "container": "/tv"
+        },
+        {
+          "bind": "/mnt/DOWNLOADS",
+          "container": "/downloads"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Other",
+        "Tools"
+      ],
+      "description": "Tautulli is a 3rd party application that you can run along side your Plex Media Server to monitor activity and track various statistics. Most importantly, these statistics include what has been watched, who watched it, when and where they watched it, and how it was watched. All statistics are presented in a nice and clean interface with many tables and graphs, which makes it easy to brag about your server to everyone else.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        }
+      ],
+      "image": "linuxserver/tautulli:latest",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/tautulli-icon.png",
+      "name": "tautulli",
+      "note": "Port 8281 The webui for Tautulli's webui Configuration - Storing Configuration and the Tautulli database - Map to you plex logs (required for IP logging)",
+      "platform": "linux",
+      "ports": [
+        "8281:8181/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "Tautulli",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/tautulli/logs",
+          "container": "/logs"
+        },
+        {
+          "bind": "/mnt/DOCKER/appdata/tautulli/config",
+          "container": "/config"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Downloaders"
+      ],
+      "description": "Transmission is designed for easy, powerful use. Transmission has the features you want from a BitTorrent client: encryption, a web interface, peer exchange, magnet links, DHT, µTP, UPnP and NAT-PMP port forwarding, webseed support, watch directories, tracker editing, global and per-torrent speed limits, and more.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        }
+      ],
+      "image": "linuxserver/transmission:latest",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/transmission-icon.png",
+      "name": "transmission",
+      "platform": "linux",
+      "ports": [
+        "9091:9091/tcp",
+        "51413:51413/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "Transmission",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/transmission/config",
+          "container": "/config"
+        },
+        {
+          "bind": "/mnt/DOWNLOADS",
+          "container": "/downloads"
+        },
+        {
+          "bind": "/mnt/DOCKER/appdata/transmission/watch",
+          "container": "/watch"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Other",
+        "Tools",
+        "Maintenance"
+      ],
+      "description": "With watchtower you can update the running version of your containerized app simply by pushing a new image to the Docker Hub or your own image registry. Watchtower will pull down your new image, gracefully shut down your existing container and restart it with the same options that were used when it was deployed initially.",
+      "image": "containrrr/watchtower:latest",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/watchtower.png",
+      "name": "watchtower",
+      "note": "It is recommended to manually update your containers but we're including this for those of you that don't care",
+      "platform": "linux",
+      "restart_policy": "unless-stopped",
+      "title": "Watchtower",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/var/run/DOCKER.sock",
+          "container": "/var/run/DOCKER.sock"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Other",
+        "Tools"
+      ],
+      "description": "A web interface for managing DOCKER containers with an emphasis on templating to provide 1 click deployments. Think of it like a decentralized app store for servers that anyone can make packages for.",
+      "image": "selfhostedpro/yacht:latest",
+      "logo": "https://raw.githubusercontent.com/SelfhostedPro/Yacht/master/readme_media/Yacht_logo_1_dark.png",
+      "name": "yacht",
+      "platform": "linux",
+      "ports": [
+        "8001:8000/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "Yacht",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/yacht/config",
+          "container": "/config"
+        },
+        {
+          "bind": "/var/run/DOCKER.sock",
+          "container": "/var/run/DOCKER.sock"
+        }
+      ]
+    }
+  ]
+}

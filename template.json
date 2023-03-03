@@ -1,0 +1,2354 @@
+{
+  "version": "2.1",
+  "templates": [
+    {
+      "categories": [
+        "Other"
+      ],
+      "description": "AdGuard Home is a network-wide software for blocking ads & tracking. After you set it up, it’ll cover ALL your home devices, and you don’t need any client-side software for that. With the rise of Internet-Of-Things and connected devices, it becomes more and more important to be able to control your whole network.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "label": "CONTEXT_PATH",
+          "name": "CONTEXT_PATH",
+          "set": "adguard home"
+        }
+      ],
+      "image": "adguard/adguardhome:latest",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/adguard.png",
+      "name": "adguard",
+      "platform": "linux",
+      "ports": [
+        "53:53/tcp",
+        "53:53/udp",
+        "67:67/udp",
+        "68:68/tcp",
+        "68:68/udp",
+        "80:80/tcp",
+        "443:443/tcp",
+        "853:853/tcp",
+        "3000:3000/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "Adguard",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/adguard/workdir",
+          "container": "/opt/adguardhome/work"
+        },
+        {
+          "bind": "/mnt/DOCKER/appdata/adguard/config",
+          "container": "/opt/adguardhome/conf"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Video",
+        "Music"
+      ],
+      "description": "Bazarr is a companion application to Sonarr and Radarr. It can manage and download subtitles based on your requirements. You define your preferences by TV show or movie and Bazarr takes care of everything for you.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "label": "TZ",
+          "name": "TZ"
+        }
+      ],
+      "image": "hotio/bazarr:release",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/bazarr.png",
+      "name": "Bazarr",
+      "platform": "linux",
+      "ports": [
+        "6767:6767/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "Bazarr",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/bazarr/config",
+          "container": "/config"
+        },
+        {
+          "bind": "/mnt/TV",
+          "container": "/tv"
+        },
+        {
+          "bind": "/mnt/MOVIES",
+          "container": "/movies"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Music"
+      ],
+      "description": "The purpose of beets is to get your music collection right once and for all. It catalogs your collection, automatically improving its metadata as it goes using the MusicBrainz database. Then it provides a bouquet of tools for manipulating and accessing your music.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        }
+      ],
+      "image": "linuxserver/beets:latest",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/beets-icon.png",
+      "name": "beets",
+      "platform": "linux",
+      "ports": [
+        "8337:8337/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "Beets",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/beets/config",
+          "container": "/config"
+        },
+        {
+          "bind": "/mnt/DOWNLOADS",
+          "container": "/downloads"
+        },
+        {
+          "bind": "/mnt/MUSIC",
+          "container": "/music"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "DNS",
+        "Tools"
+      ],
+      "description": "Duck DNS is a free service which will point a DNS (sub domains of duckdns.org) to an IP of your choice. The service is completely free, and doesn't require reactivation or forum posts to maintain its existence.",
+      "env": [
+        {
+          "label": "SUBDOMAINS",
+          "name": "SUBDOMAINS",
+          "set": ""
+        },
+        {
+          "label": "TOKEN",
+          "name": "TOKEN",
+          "set": ""
+        },
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        }
+      ],
+      "image": "linuxserver/duckdns:latest",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/duckdns.png",
+      "name": "duckdns",
+      "note": "<b>Configuration</b></br>First, go to duckdns site, register your subdomain and retrieve your token<br/>Then run the DOCKER create command above with your subdomain(s) and token<br/>It will update your IP with the DuckDNS service every 5 minutes",
+      "platform": "linux",
+      "restart_policy": "unless-stopped",
+      "title": "Duck DNS",
+      "type": 1
+    },
+    {
+      "categories": [
+        "Backup",
+        "Cloud",
+        "Other",
+        "Productivity",
+        "Tools"
+      ],
+      "description": "Free backup software to store encrypted backups online, Duplicati works with standard protocols like FTP, SSH, WebDAV as well as popular services like Microsoft OneDrive, Amazon Cloud Drive and S3, Google Drive, box.com, Mega, hubiC and many others.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        }
+      ],
+      "image": "linuxserver/duplicati:latest",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/duplicati-icon.png",
+      "name": "duplicati",
+      "platform": "linux",
+      "ports": [
+        "8200:8200/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "Duplicati",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/duplicati/config",
+          "container": "/config"
+        },
+        {
+          "bind": "/mnt/DOCKER/appdata/duplicati/tmp",
+          "container": "/tmp"
+        },
+        {
+          "bind": "/mnt/DOCKER/appdata/duplicati/backups",
+          "container": "/backups"
+        },
+        {
+          "bind": "/mnt/DOCKER/appdata/duplicati/source",
+          "container": "/source"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Video",
+        "Music",
+        "Photos"
+      ],
+      "description": "Emby organizes video, music, live TV, and photos from personal media libraries and streams them to smart TVs, streaming boxes and mobile devices. This container is packaged as a standalone emby Media Server.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "label": "TZ",
+          "name": "TZ"
+        }
+      ],
+      "image": "linuxserver/emby:latest",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/emby.png",
+      "name": "Emby",
+      "platform": "linux",
+      "ports": [
+        "8096:8096/tcp",
+        "8920:8920/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "Emby",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/emby/config",
+          "container": "/config"
+        },
+        {
+          "bind": "/mnt/TV",
+          "container": "/data/tvshows"
+        },
+        {
+          "bind": "/mnt/MOVIES",
+          "container": "/data/movies"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Other",
+        "Tools"
+      ],
+      "description": "Embystat is a personal web server that can calculate all kinds of statistics from your (local) Emby server. Just install this on your server and let him calculate all kinds of fun stuff.",
+      "image": "linuxserver/embystat:latest",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/embystat.png",
+      "name": "EmbyStat",
+      "note": "Access the ui at your-ip:6555. Follow the setup wizard on initial install. Then configure the required services.",
+      "platform": "linux",
+      "ports": [
+        "6555:6555/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "EmbyStat",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/embystat/config",
+          "container": "/config"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Music"
+      ],
+      "description": "Headphones is an automated music downloader for NZB and Torrent, written in Python. It supports SABnzbd, NZBget, Transmission, µTorrent and Blackhole.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        }
+      ],
+      "image": "linuxserver/headphones:latest",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/headphones-icon.png",
+      "name": "headphones",
+      "platform": "linux",
+      "ports": [
+        "8181:8181/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "Headphones",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/headphones/config",
+          "container": "/config"
+        },
+        {
+          "bind": "/mnt/DOWNLOADS",
+          "container": "/Downloads"
+        },
+        {
+          "bind": "/mnt/MUSIC",
+          "container": "/music"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Video"
+      ],
+      "description": "Headless installation of Kodi™ (formerly known as XBMC™), to enable library updates.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        }
+      ],
+      "image": "linuxserver/kodi-headless:latest",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/kodi-icon.png",
+      "name": "kodi-headless",
+      "platform": "linux",
+      "ports": [
+        "8880:8080/tcp",
+        "9777/udp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "Kodi Headless",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/kodi",
+          "container": "/config"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Downloaders",
+        "Music"
+      ],
+      "description": "Lidarr is a music collection manager for Usenet and BitTorrent users.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        }
+      ],
+      "image": "hotio/lidarr:release",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/lidarr.png",
+      "name": "lidarr",
+      "platform": "linux",
+      "ports": [
+        "8686:8686/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "Lidarr",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/lidarr/config",
+          "container": "/config"
+        },
+        {
+          "bind": "/mnt/DOWNLOADS",
+          "container": "/downloads"
+        },
+        {
+          "bind": "/mnt/MUSIC",
+          "container": "/music"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Other",
+        "Tools"
+      ],
+      "description": "An Enhanced drop in replacement for Mysql.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "label": "MYSQL_ROOT_PASSWORD",
+          "name": "MYSQL_ROOT_PASSWORD",
+          "set": ""
+        }
+      ],
+      "image": "linuxserver/mariadb:latest",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/mariadb-icon.png",
+      "name": "mariadb",
+      "platform": "linux",
+      "ports": [
+        "3306:3306/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "MariaDB",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/mariadb/config",
+          "container": "/config"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Music",
+        "Other",
+        "Tools"
+      ],
+      "description": "MusicBrainz is an open music encyclopedia that collects music metadata and makes it available to the public.",
+      "env": [
+        {
+          "label": "BRAINZCODE",
+          "name": "BRAINZCODE",
+          "set": ""
+        },
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        }
+      ],
+      "image": "linuxserver/musicbrainz:latest",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/musicbrainz-icon.png",
+      "name": "musicbrainz",
+      "platform": "linux",
+      "ports": [
+        "5000:5000/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "MusicBrainz",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/musicbrainz/config",
+          "container": "/config"
+        },
+        {
+          "bind": "/mnt/DOCKER/appdata/musicbrainz/data",
+          "container": "/data"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Downloaders"
+      ],
+      "description": "NZBGet is a usenet downloader, written in C++ and designed with performance in mind to achieve maximum download speed by using very little system resources. It supports all platforms including Windows, Mac, Linux and works on all devices including PC, NAS, WLAN routers and media players.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        }
+      ],
+      "image": "linuxserver/nzbget:latest",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/nzbget-icon.png",
+      "name": "nzbget",
+      "platform": "linux",
+      "ports": [
+        "6789:6789/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "NZBGet",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/nzbget/config",
+          "container": "/config"
+        },
+        {
+          "bind": "/mnt/DOWNLOADS",
+          "container": "/downloads"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Downloaders",
+        "Other",
+        "Tools"
+      ],
+      "description": "NZBHydra is a meta search for NZB indexers and the \"spiritual successor\" to NZBmegasearcH. It provides easy access to a number of raw and newznab based indexers.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        }
+      ],
+      "image": "linuxserver/nzbhydra2:latest",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/hydra-icon.png",
+      "name": "nzbhydra2",
+      "platform": "linux",
+      "ports": [
+        "5076:5076/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "NZBHydra 2",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/nzbhydra2/config",
+          "container": "/config"
+        },
+        {
+          "bind": "/mnt/DOWNLOADS",
+          "container": "/downloads"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Web",
+        "Proxy"
+      ],
+      "description": "Nginx is a web server with a strong focus on high concurrency, performance and low memory usage. It can also act as a reverse proxy server for HTTP, HTTPS, SMTP, POP3, and IMAP protocols, as well as a load balancer and an HTTP cache.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        }
+      ],
+      "image": "linuxserver/nginx:latest",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/nginx-icon.png",
+      "name": "nginx",
+      "platform": "linux",
+      "ports": [
+        "8088:80/tcp",
+        "4343:443/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "Nginx",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/nginx/config",
+          "container": "/config"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Downloaders",
+        "Other",
+        "Video",
+        "Tools"
+      ],
+      "description": "Ombi allows you to host your own Plex Request and user management system.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        }
+      ],
+      "image": "linuxserver/ombi:latest",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/ombi.png",
+      "name": "ombi",
+      "platform": "linux",
+      "ports": [
+        "3579:3579/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "Ombi",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/ombi/config",
+          "container": "/config"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Other",
+        "Tools"
+      ],
+      "description": "Overseerr is a free and open source software application for managing requests for your media library.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        }
+      ],
+      "image": "hotio/overseerr:latest",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/overseerr-icon.png",
+      "name": "Overseerr",
+      "platform": "linux",
+      "ports": [
+        "5055:5055/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "Overseerr",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/overseerr/config",
+          "container": "/config"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Video",
+        "Music",
+        "Photos"
+      ],
+      "description": "Your favorite movies, TV, music, web shows, podcasts, and more, all streamed to your favorite screens.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "label": "VERSION",
+          "name": "VERSION",
+          "set": "latest"
+        }
+      ],
+      "image": "linuxserver/plex:latest",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/plex-icon.png",
+      "name": "plex",
+      "network": "host",
+      "platform": "linux",
+      "restart_policy": "unless-stopped",
+      "title": "Plex",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/plex/config",
+          "container": "/config"
+        },
+        {
+          "bind": "/mnt/TV",
+          "container": "/tv"
+        },
+        {
+          "bind": "/mnt/MOVIES",
+          "container": "/movies"
+        },
+        {
+          "bind": "/mnt/MUSIC",
+          "container": "/music"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Downloaders",
+        "Video"
+      ],
+      "description": "Prowlarr is a indexer manager/proxy built on the popular arr .net/reactjs base stack to integrate with your various PVR apps. Prowlarr supports both Torrent Trackers and Usenet Indexers. It integrates seamlessly with Sonarr, Radarr, Lidarr, and Readarr offering complete management of your indexers with no per app Indexer setup required (we do it all).",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        }
+      ],
+      "image": "ghcr.io/linuxserver/prowlarr:develop",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/prowlarr.png",
+      "name": "prowlarr",
+      "platform": "linux",
+      "ports": [
+        "9696:9696/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "Prowlarr",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/prowlarr/config",
+          "container": "/config"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Downloaders",
+        "Video"
+      ],
+      "description": "Radarr - A fork of Sonarr to work with movies à la Couchpotato.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        }
+      ],
+      "image": "hotio/radarr:release",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/radarr.png",
+      "name": "radarr",
+      "platform": "linux",
+      "ports": [
+        "7878:7878/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "Radarr",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/radarr/config",
+          "container": "/config"
+        },
+        {
+          "bind": "/mnt/DOWNLOADS",
+          "container": "/downloads"
+        },
+        {
+          "bind": "/mnt/MOVIES",
+          "container": "/movies"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Downloaders"
+      ],
+      "description": "SABnzbd makes Usenet as simple and streamlined as possible by automating everything we can. All you have to do is add an .nzb. SABnzbd takes over from there, where it will be automatically downloaded, verified, repaired, extracted and filed away with zero human interaction.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        }
+      ],
+      "image": "linuxserver/sabnzbd:latest",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/sabnzbd-icon.png",
+      "name": "sabnzbd",
+      "platform": "linux",
+      "ports": [
+        "8181:8080/tcp",
+        "9191:9090/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "SABnzbd",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/sabnzbd/config",
+          "container": "/config"
+        },
+        {
+          "bind": "/mnt/DOWNLOADS",
+          "container": "/downloads"
+        },
+        {
+          "bind": "/mnt/DOWNLOADS/incomplete",
+          "container": "/incomplete-downloads"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Downloaders",
+        "Video"
+      ],
+      "description": "Sonarr (formerly NZBdrone) is a PVR for usenet and bittorrent users. It can monitor multiple RSS feeds for new episodes of your favorite shows and will grab, sort and rename them. It can also be configured to automatically upgrade the quality of files already downloaded when a better quality format becomes available.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        }
+      ],
+      "image": "hotio/sonarr:release",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/sonarr-icon.png",
+      "name": "sonarr",
+      "platform": "linux",
+      "ports": [
+        "8989:8989/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "Sonarr",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/sonarr/config",
+          "container": "/config"
+        },
+        {
+          "bind": "/mnt/DOCKER/appdata/sonarr/dev/rtc",
+          "container": "/dev/rtc"
+        },
+        {
+          "bind": "/mnt/TV",
+          "container": "/tv"
+        },
+        {
+          "bind": "/mnt/DOWNLOADS",
+          "container": "/downloads"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Other",
+        "Tools"
+      ],
+      "description": "Tautulli is a 3rd party application that you can run along side your Plex Media Server to monitor activity and track various statistics. Most importantly, these statistics include what has been watched, who watched it, when and where they watched it, and how it was watched. All statistics are presented in a nice and clean interface with many tables and graphs, which makes it easy to brag about your server to everyone else.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        }
+      ],
+      "image": "linuxserver/tautulli:latest",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/tautulli-icon.png",
+      "name": "tautulli",
+      "note": "Port 8281 The webui for Tautulli's webui Configuration - Storing Configuration and the Tautulli database - Map to you plex logs (required for IP logging)",
+      "platform": "linux",
+      "ports": [
+        "8281:8181/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "Tautulli",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/tautulli/logs",
+          "container": "/logs"
+        },
+        {
+          "bind": "/mnt/DOCKER/appdata/tautulli/config",
+          "container": "/config"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Downloaders"
+      ],
+      "description": "Transmission is designed for easy, powerful use. Transmission has the features you want from a BitTorrent client: encryption, a web interface, peer exchange, magnet links, DHT, µTP, UPnP and NAT-PMP port forwarding, webseed support, watch directories, tracker editing, global and per-torrent speed limits, and more.",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        }
+      ],
+      "image": "linuxserver/transmission:latest",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/transmission-icon.png",
+      "name": "transmission",
+      "platform": "linux",
+      "ports": [
+        "9091:9091/tcp",
+        "51413:51413/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "Transmission",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/transmission/config",
+          "container": "/config"
+        },
+        {
+          "bind": "/mnt/DOWNLOADS",
+          "container": "/downloads"
+        },
+        {
+          "bind": "/mnt/DOCKER/appdata/transmission/watch",
+          "container": "/watch"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Other",
+        "Tools",
+        "Maintenance"
+      ],
+      "description": "With watchtower you can update the running version of your containerized app simply by pushing a new image to the Docker Hub or your own image registry. Watchtower will pull down your new image, gracefully shut down your existing container and restart it with the same options that were used when it was deployed initially.",
+      "image": "containrrr/watchtower:latest",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/watchtower.png",
+      "name": "watchtower",
+      "note": "It is recommended to manually update your containers but we're including this for those of you that don't care",
+      "platform": "linux",
+      "restart_policy": "unless-stopped",
+      "title": "Watchtower",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/var/run/DOCKER.sock",
+          "container": "/var/run/DOCKER.sock"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Other",
+        "Tools"
+      ],
+      "description": "A web interface for managing DOCKER containers with an emphasis on templating to provide 1 click deployments. Think of it like a decentralized app store for servers that anyone can make packages for.",
+      "image": "selfhostedpro/yacht:latest",
+      "logo": "https://raw.githubusercontent.com/SelfhostedPro/Yacht/master/readme_media/Yacht_logo_1_dark.png",
+      "name": "yacht",
+      "platform": "linux",
+      "ports": [
+        "8001:8000/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "Yacht",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/mnt/DOCKER/appdata/yacht/config",
+          "container": "/config"
+        },
+        {
+          "bind": "/var/run/DOCKER.sock",
+          "container": "/var/run/DOCKER.sock"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "title": "Registry",
+      "description": "Docker image registry",
+      "categories": [
+        "DOCKER"
+      ],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/registry.png",
+      "image": "registry:latest",
+      "ports": [
+        "5000/tcp"
+      ],
+      "volumes": [
+        {
+          "container": "/var/lib/registry"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "title": "Registry (cache)",
+      "description": "Docker image registry configured as a DockerHub pull through cache",
+      "categories": [
+        "DOCKER"
+      ],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/registry.png",
+      "image": "registry:latest",
+      "ports": [
+        "5000/tcp"
+      ],
+      "volumes": [
+        {
+          "container": "/var/lib/registry"
+        }
+      ],
+      "env": [
+        {
+          "name": "REGISTRY_PROXY_REMOTEURL",
+          "default": "https://registry-1.DOCKER.io",
+          "preset": true
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "title": "Ubuntu",
+      "description": "Debian-based Linux operating system",
+      "categories": [
+        "operating-system"
+      ],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/ubuntu.png",
+      "image": "ubuntu:latest",
+      "interactive": true,
+      "command": "/bin/bash"
+    },
+    {
+      "type": 1,
+      "title": "NodeJS",
+      "description": "JavaScript-based platform for server-side and networking applications",
+      "categories": [
+        "development"
+      ],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/node.png",
+      "image": "node:latest",
+      "interactive": true,
+      "command": "/bin/bash"
+    },
+    {
+      "type": 1,
+      "title": "Nginx",
+      "description": "High performance web server",
+      "categories": [
+        "webserver"
+      ],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/nginx.png",
+      "image": "nginx:latest",
+      "ports": [
+        "80/tcp",
+        "443/tcp"
+      ],
+      "volumes": [
+        {
+          "container": "/etc/nginx"
+        },
+        {
+          "container": "/usr/share/nginx/html"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "title": "Httpd",
+      "description": "Open-source HTTP server",
+      "categories": [
+        "webserver"
+      ],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/httpd.png",
+      "image": "httpd:latest",
+      "ports": [
+        "80/tcp"
+      ],
+      "volumes": [
+        {
+          "container": "/usr/local/apache2/htdocs/"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "title": "MySQL",
+      "description": "The most popular open-source database",
+      "categories": [
+        "database"
+      ],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/mysql.png",
+      "image": "mysql/mysql-server:5.7",
+      "env": [
+        {
+          "name": "MYSQL_ROOT_PASSWORD",
+          "label": "Root password"
+        },
+        {
+          "name": "MYSQL_ROOT_HOST",
+          "default": "%",
+          "preset": true
+        }
+      ],
+      "ports": [
+        "3306/tcp"
+      ],
+      "volumes": [
+        {
+          "container": "/var/lib/mysql"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "title": "MariaDB",
+      "description": "Performance beyond MySQL",
+      "categories": [
+        "database"
+      ],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/mariadb.png",
+      "image": "mariadb:latest",
+      "env": [
+        {
+          "name": "MYSQL_ROOT_PASSWORD",
+          "label": "Root password"
+        }
+      ],
+      "ports": [
+        "3306/tcp"
+      ],
+      "volumes": [
+        {
+          "container": "/var/lib/mysql"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "title": "PostgreSQL",
+      "description": "The most advanced open-source database",
+      "categories": [
+        "database"
+      ],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/postgres.png",
+      "image": "postgres:latest",
+      "env": [
+        {
+          "name": "POSTGRES_USER",
+          "label": "Superuser"
+        },
+        {
+          "name": "POSTGRES_PASSWORD",
+          "label": "Superuser password"
+        }
+      ],
+      "ports": [
+        "5432/tcp"
+      ],
+      "volumes": [
+        {
+          "container": "/var/lib/postgresql/data"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "title": "Mongo",
+      "description": "Open-source document-oriented database",
+      "categories": [
+        "database"
+      ],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/mongo.png",
+      "image": "mongo:latest",
+      "ports": [
+        "27017/tcp"
+      ],
+      "volumes": [
+        {
+          "container": "/data/db"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "title": "CrateDB",
+      "description": "An open-source distributed SQL database",
+      "categories": [
+        "database"
+      ],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/cratedb.png",
+      "image": "crate:latest",
+      "ports": [
+        "4200/tcp",
+        "4300/tcp"
+      ],
+      "volumes": [
+        {
+          "container": "/data"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "title": "Elasticsearch",
+      "description": "Open-source search and analytics engine",
+      "categories": [
+        "database"
+      ],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/elasticsearch.png",
+      "image": "DOCKER.elastic.co/elasticsearch/elasticsearch:7.15.1",
+      "ports": [
+        "9200/tcp",
+        "9300/tcp"
+      ],
+      "volumes": [
+        {
+          "container": "/usr/share/elasticsearch/data"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "title": "Minio",
+      "description": "A distributed object storage server built for cloud applications and devops",
+      "categories": [
+        "storage"
+      ],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/minio.png",
+      "image": "quay.io/minio/minio:latest",
+      "ports": [
+        "9000/tcp",
+        "9001/tcp"
+      ],
+      "env": [
+        {
+          "name": "MINIO_ROOT_USER",
+          "label": "Root user"
+        },
+        {
+          "name": "MINIO_ROOT_PASSWORD",
+          "label": "Root password"
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/data"
+        },
+        {
+          "container": "/root/.minio"
+        }
+      ],
+      "command": "server /data --console-address ':9001'"
+    },
+    {
+      "type": 1,
+      "title": "Scality S3",
+      "description": "Standalone AWS S3 protocol server",
+      "categories": [
+        "storage"
+      ],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/scality-s3.png",
+      "image": "scality/s3server",
+      "ports": [
+        "8000/tcp"
+      ],
+      "env": [
+        {
+          "name": "SCALITY_ACCESS_KEY",
+          "label": "Scality S3 access key"
+        },
+        {
+          "name": "SCALITY_SECRET_KEY",
+          "label": "Scality S3 secret key"
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/usr/src/app/localData"
+        },
+        {
+          "container": "/usr/src/app/localMetadata"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "title": "SQL Server",
+      "description": "Microsoft SQL Server on Linux",
+      "categories": [
+        "database"
+      ],
+      "platform": "linux",
+      "note": "Password needs to include at least 8 characters including uppercase, lowercase letters, base-10 digits and/or non-alphanumeric symbols.",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/microsoft.png",
+      "image": "mcr.microsoft.com/mssql/server:2019-latest",
+      "ports": [
+        "1433/tcp"
+      ],
+      "env": [
+        {
+          "name": "ACCEPT_EULA",
+          "default": "Y",
+          "preset": true
+        },
+        {
+          "name": "SA_PASSWORD",
+          "label": "SA password"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "title": "SQL Server",
+      "description": "Microsoft SQL Server Developer for Windows containers",
+      "categories": [
+        "database"
+      ],
+      "platform": "windows",
+      "note": "Password needs to include at least 8 characters including uppercase, lowercase letters, base-10 digits and/or non-alphanumeric symbols.",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/microsoft.png",
+      "image": "microsoft/mssql-server-windows-developer:latest",
+      "ports": [
+        "1433/tcp"
+      ],
+      "env": [
+        {
+          "name": "ACCEPT_EULA",
+          "default": "Y",
+          "preset": true
+        },
+        {
+          "name": "sa_password",
+          "label": "SA password"
+        }
+      ],
+      "volumes": [
+        {
+          "container": "C:/temp/"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "title": "SQL Server Express",
+      "description": "Microsoft SQL Server Express for Windows containers",
+      "categories": [
+        "database"
+      ],
+      "platform": "windows",
+      "note": "Password needs to include at least 8 characters including uppercase, lowercase letters, base-10 digits and/or non-alphanumeric symbols.",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/microsoft.png",
+      "image": "microsoft/mssql-server-windows-express:latest",
+      "ports": [
+        "1433/tcp"
+      ],
+      "env": [
+        {
+          "name": "ACCEPT_EULA",
+          "default": "Y",
+          "preset": true
+        },
+        {
+          "name": "sa_password",
+          "label": "SA password"
+        }
+      ],
+      "volumes": [
+        {
+          "container": "C:/temp/"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "title": "Solr",
+      "description": "Open-source enterprise search platform",
+      "categories": [
+        "search-engine"
+      ],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/solr.png",
+      "image": "solr:latest",
+      "ports": [
+        "8983/tcp"
+      ],
+      "volumes": [
+        {
+          "container": "/opt/solr/mydata"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "title": "Redis",
+      "description": "Open-source in-memory data structure store",
+      "categories": [
+        "database"
+      ],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/redis.png",
+      "image": "redis:latest",
+      "ports": [
+        "6379/tcp"
+      ],
+      "volumes": [
+        {
+          "container": "/data"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "title": "Redis Cluster",
+      "description": "Open-source in-memory data structure store - Cluster mode",
+      "categories": [
+        "database"
+      ],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/redis.png",
+      "repository": {
+        "url": "https://github.com/mnt/templates",
+        "stackfile": "stacks/redis-cluster/DOCKER-stack.yaml"
+      },
+      "env": [
+        {
+          "name": "REDIS_PASSWD",
+          "label": "Redis password"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "title": "RabbitMQ",
+      "description": "Highly reliable enterprise messaging system",
+      "categories": [
+        "messaging"
+      ],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/rabbitmq.png",
+      "image": "rabbitmq:latest",
+      "ports": [
+        "5671/tcp",
+        "5672/tcp"
+      ],
+      "volumes": [
+        {
+          "container": "/var/lib/rabbitmq"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "title": "Ghost",
+      "description": "Free and open-source blogging platform",
+      "categories": [
+        "blog"
+      ],
+      "note": "Access the blog management interface under <code>/ghost/</code>.",
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/ghost.png",
+      "image": "ghost:latest",
+      "ports": [
+        "2368/tcp"
+      ],
+      "volumes": [
+        {
+          "container": "/var/lib/ghost/content"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "title": "Joomla",
+      "description": "Another free and open-source CMS",
+      "categories": [
+        "CMS"
+      ],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/joomla.png",
+      "image": "joomla:latest",
+      "env": [
+        {
+          "name": "JOOMLA_DB_HOST",
+          "label": "MySQL database host",
+          "type": "container"
+        },
+        {
+          "name": "JOOMLA_DB_PASSWORD",
+          "label": "Database password"
+        }
+      ],
+      "ports": [
+        "80/tcp"
+      ],
+      "volumes": [
+        {
+          "container": "/var/www/html"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "title": "Drupal",
+      "description": "Open-source content management framework",
+      "categories": [
+        "CMS"
+      ],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/drupal.png",
+      "image": "drupal:latest",
+      "ports": [
+        "80/tcp"
+      ],
+      "volumes": [
+        {
+          "container": "/var/www/html"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "title": "Plone",
+      "description": "A free and open-source CMS built on top of Zope",
+      "note": "Default user and password are admin/admin",
+      "categories": [
+        "CMS"
+      ],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/plone.png",
+      "image": "plone:latest",
+      "ports": [
+        "8080/tcp"
+      ],
+      "volumes": [
+        {
+          "container": "/data"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "title": "Sematext Docker Agent",
+      "description": "Collect logs, metrics and DOCKER events",
+      "categories": [
+        "Log Management",
+        "Monitoring"
+      ],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/sematext_agent.png",
+      "image": "sematext/sematext-agent-DOCKER:latest",
+      "name": "sematext-agent",
+      "privileged": true,
+      "env": [
+        {
+          "name": "LOGSENE_TOKEN",
+          "label": "Logs token"
+        },
+        {
+          "name": "SPM_TOKEN",
+          "label": "SPM monitoring token"
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/var/run/DOCKER.sock",
+          "bind": "/var/run/DOCKER.sock"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "title": "Datadog agent",
+      "description": "Collect events and metrics",
+      "categories": [
+        "Monitoring"
+      ],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/datadog_agent.png",
+      "image": "datadog/agent:latest",
+      "env": [
+        {
+          "name": "DD_API_KEY",
+          "label": "Datadog API key"
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/var/run/DOCKER.sock",
+          "bind": "/var/run/DOCKER.sock",
+          "readonly": true
+        },
+        {
+          "container": "/host/sys/fs/cgroup",
+          "bind": "/sys/fs/cgroup",
+          "readonly": true
+        },
+        {
+          "container": "/host/proc",
+          "bind": "/proc",
+          "readonly": true
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "title": "Mautic",
+      "description": "Open-source marketing automation platform",
+      "categories": [
+        "marketing"
+      ],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/mautic.png",
+      "image": "mautic/mautic:latest",
+      "env": [
+        {
+          "name": "MAUTIC_DB_HOST",
+          "label": "MySQL database host",
+          "type": "container"
+        },
+        {
+          "name": "MAUTIC_DB_PASSWORD",
+          "label": "Database password"
+        }
+      ],
+      "ports": [
+        "80/tcp"
+      ],
+      "volumes": [
+        {
+          "container": "/var/www/html"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "title": "Jenkins",
+      "description": "Open-source continuous integration tool",
+      "categories": [
+        "continuous-integration"
+      ],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/jenkins.png",
+      "image": "jenkins/jenkins:lts-jdk11",
+      "ports": [
+        "8080/tcp",
+        "50000/tcp"
+      ],
+      "volumes": [
+        {
+          "container": "/var/jenkins_home"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "title": "Redmine",
+      "description": "Open-source project management tool",
+      "note": "Default user and password are admin/admin",
+      "categories": [
+        "project-management"
+      ],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/redmine.png",
+      "image": "redmine:latest",
+      "ports": [
+        "3000/tcp"
+      ],
+      "volumes": [
+        {
+          "container": "/usr/src/redmine/files"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "title": "File browser",
+      "description": "A web file manager",
+      "note": "Default credentials: admin/admin",
+      "categories": [
+        "filesystem",
+        "storage"
+      ],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/filebrowser.png",
+      "image": "filebrowser/filebrowser:latest",
+      "ports": [
+        "80/tcp"
+      ],
+      "volumes": [
+        {
+          "container": "/data"
+        },
+        {
+          "container": "/srv"
+        }
+      ],
+      "command": "--port 80 --database /data/database.db --root /srv"
+    },
+    {
+      "type": 1,
+      "title": "CommandBox",
+      "description": "ColdFusion (CFML) CLI",
+      "categories": [
+        "development"
+      ],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/ortussolutions-commandbox.png",
+      "image": "ortussolutions/commandbox:latest",
+      "env": [
+        {
+          "name": "CFENGINE",
+          "default": "lucee@4.5",
+          "preset": true
+        }
+      ],
+      "ports": [
+        "8080/tcp",
+        "8443/tcp"
+      ]
+    },
+    {
+      "type": 1,
+      "title": "ContentBox",
+      "description": "Open-source modular CMS",
+      "categories": [
+        "CMS"
+      ],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/ortussolutions-contentbox.png",
+      "image": "ortussolutions/contentbox:latest",
+      "env": [
+        {
+          "name": "express",
+          "default": "true",
+          "preset": true
+        },
+        {
+          "name": "install",
+          "default": "true",
+          "preset": true
+        },
+        {
+          "name": "CFENGINE",
+          "default": "lucee@4.5",
+          "preset": true
+        }
+      ],
+      "ports": [
+        "8080/tcp",
+        "8443/tcp"
+      ],
+      "volumes": [
+        {
+          "container": "/data/contentbox/db"
+        },
+        {
+          "container": "/app/includes/shared/media"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "title": "Dokku",
+      "description": "Dokku setup as a container",
+      "categories": [
+        "PaaS"
+      ],
+      "platform": "linux",
+      "logo": "",
+      "image": "dokku/dokku",
+      "ports": [
+        "22/tcp",
+        "80/tcp",
+        "443/tcp"
+      ],
+      "volumes": [
+        {
+          "container": "/mnt/dokku",
+          "bind": "/var/lib/dokku"
+        },
+        {
+          "container": "/var/run/DOCKER.sock",
+          "bind": "/var/run/DOCKER.sock"
+        }
+      ],
+      "env": [
+        {
+          "name": "DOKKU_HOSTNAME",
+          "label": "Dokku hostname",
+          "description": "Global hostname to be registered by Dokku"
+        },
+        {
+          "name": "DOKKU_HOST_ROOT",
+          "label": "Dokku host root",
+          "default": "/var/lib/dokku/home/dokku",
+          "description": "Image build cache path. Generally set to <data dir> + '/home/dokku'"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "title": "OPC Router",
+      "description": "No-code middleware for industrial applications. The OPC Router connects PLCs, PCS, SCADA, MES, SQL databases and servers, label printers, e-mail servers and erp-systems via OPC UA, MQTT, REST, CSV and many others without any programming effort",
+      "categories": [
+        "edge"
+      ],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/opc-router.png",
+      "image": "opcrouter/runtime:latest",
+      "ports": [
+        "27017/tcp"
+      ],
+      "env": [
+        {
+          "name": "OR_DATABASE_USERNAME",
+          "label": "Database user"
+        },
+        {
+          "name": "MONGO_INITDB_ROOT_USERNAME",
+          "label": "Database password"
+        },
+        {
+          "name": "OR_DATABASE_PASSWORD",
+          "label": "Database root user"
+        },
+        {
+          "name": "MONGO_INITDB_ROOT_PASSWORD",
+          "label": "Database root password"
+        },
+        {
+          "name": "OR_I_ACCEPT_EULA",
+          "label": "Accept EULA",
+          "select": [
+            {
+              "text": "Yes, I accept",
+              "value": "true",
+              "default": true
+            }
+          ]
+        }
+      ],
+      "volumes": [
+        {
+          "container": "/data/db"
+        },
+        {
+          "container": "/root/.dotnet/corefx/cryptography/x509stores/"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "title": "Floating License Server",
+      "description": "License Server for Softing edgeConnector products",
+      "categories": [
+        "edge"
+      ],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/softing.png",
+      "image": "softingindustrial/floating-license-server:latest",
+      "ports": [
+        "6200/tcp"
+      ],
+      "interactive": true,
+      "volumes": [
+        {
+          "container": "/licsrv/licenses"
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "title": "EdgeConnector Modbus",
+      "description": "Connect Modbus TCP Sensors/PLCs and provide the data via OPC UA and MQTT",
+      "categories": [
+        "edge"
+      ],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/softing.png",
+      "image": "softingindustrial/edgeconnector-modbus:latest",
+      "ports": [
+        "443/tcp",
+        "8099/tcp",
+        "4897/tcp"
+      ]
+    },
+    {
+      "type": 2,
+      "title": "Portainer Agent",
+      "description": "Manage all the resources in your Swarm cluster",
+      "note": "The agent will be deployed globally inside your cluster and available on port 9001.",
+      "categories": [
+        "portainer"
+      ],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/portainer.png",
+      "repository": {
+        "url": "https://github.com/mnt/templates",
+        "stackfile": "stacks/portainer-agent/DOCKER-stack.yml"
+      }
+    },
+    {
+      "type": 2,
+      "title": "OpenFaaS",
+      "name": "func",
+      "description": "Serverless functions made simple",
+      "note": "Deploys the API gateway and sample functions. You can access the UI on port 8080. <b>Warning</b>: the name of the stack must be 'func'.",
+      "categories": [
+        "serverless"
+      ],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/openfaas.png",
+      "repository": {
+        "url": "https://github.com/openfaas/faas",
+        "stackfile": "DOCKER-compose.yml"
+      }
+    },
+    {
+      "type": 2,
+      "title": "IronFunctions",
+      "description": "Open-source serverless computing platform",
+      "note": "Deploys the IronFunctions API and UI.",
+      "categories": [
+        "serverless"
+      ],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/ironfunctions.png",
+      "repository": {
+        "url": "https://github.com/mnt/templates",
+        "stackfile": "stacks/ironfunctions/DOCKER-stack.yml"
+      }
+    },
+    {
+      "type": 2,
+      "title": "CockroachDB",
+      "description": "CockroachDB cluster",
+      "note": "Deploys an insecure CockroachDB cluster, please refer to <a href=\"https://www.cockroachlabs.com/docs/stable/orchestrate-cockroachdb-with-DOCKER-swarm.html\" target=\"_blank\">CockroachDB documentation</a> for production deployments.",
+      "categories": [
+        "database"
+      ],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/cockroachdb.png",
+      "repository": {
+        "url": "https://github.com/mnt/templates",
+        "stackfile": "stacks/cockroachdb/DOCKER-stack.yml"
+      }
+    },
+    {
+      "type": 2,
+      "title": "WordPress",
+      "description": "WordPress setup with a MySQL database",
+      "note": "Deploys a WordPress instance connected to a MySQL database.",
+      "categories": [
+        "CMS"
+      ],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/wordpress.png",
+      "repository": {
+        "url": "https://github.com/mnt/templates",
+        "stackfile": "stacks/wordpress/DOCKER-stack.yml"
+      },
+      "env": [
+        {
+          "name": "MYSQL_DATABASE_PASSWORD",
+          "label": "Database root password",
+          "description": "Password used by the MySQL root user."
+        }
+      ]
+    },
+    {
+      "type": 3,
+      "title": "WordPress",
+      "description": "WordPress setup with a MySQL database",
+      "note": "Deploys a WordPress instance connected to a MySQL database.",
+      "categories": [
+        "CMS"
+      ],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/wordpress.png",
+      "repository": {
+        "url": "https://github.com/mnt/templates",
+        "stackfile": "stacks/wordpress/DOCKER-compose.yml"
+      },
+      "env": [
+        {
+          "name": "MYSQL_DATABASE_PASSWORD",
+          "label": "Database root password",
+          "description": "Password used by the MySQL root user."
+        }
+      ]
+    },
+    {
+      "type": 3,
+      "title": "OpenAMT",
+      "description": "OpenAMT Cloud Toolkit",
+      "note": "MPS password needs to be 8-32 characters including one uppercase, one lowercase letters, one base-10 digit and one special character.",
+      "categories": [
+        "Cloud"
+      ],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/intel.png",
+      "repository": {
+        "url": "https://github.com/mnt/templates",
+        "stackfile": "stacks/openamt/DOCKER-compose.yml"
+      },
+      "env": [
+        {
+          "name": "POSTGRES_USER",
+          "label": "Database user"
+        },
+        {
+          "name": "POSTGRES_PASSWORD",
+          "label": "Database password"
+        },
+        {
+          "name": "MPS_USER",
+          "label": "MPS user"
+        },
+        {
+          "name": "MPS_PASSWORD",
+          "label": "MPS password"
+        },
+        {
+          "name": "MPS_COMMON_NAME",
+          "label": "MPS URL",
+          "description": "Used to connect to the MPS API."
+        },
+        {
+          "name": "MPS_SECRET",
+          "label": "MPS Secret",
+          "description": "Strong secret key used to log into MPS."
+        },
+        {
+          "name": "VAULT_SECRET",
+          "label": "Vault secret",
+          "description": "Secret token used to log into Vault (don't include '.' character)."
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "title": "Microsoft OMS Agent",
+      "description": "Microsoft Operations Management Suite Linux agent.",
+      "categories": [
+        "OPS"
+      ],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/microsoft.png",
+      "repository": {
+        "url": "https://github.com/mnt/templates",
+        "stackfile": "stacks/microsoft-oms/DOCKER-stack.yml"
+      },
+      "env": [
+        {
+          "name": "AZURE_WORKSPACE_ID",
+          "label": "Workspace ID",
+          "description": "Azure Workspace ID"
+        },
+        {
+          "name": "AZURE_PRIMARY_KEY",
+          "label": "Primary key",
+          "description": "Azure primary key"
+        }
+      ]
+    },
+    {
+      "title": "Sematext Docker Agent",
+      "type": 2,
+      "categories": [
+        "Log Management",
+        "Monitoring"
+      ],
+      "description": "Collect logs, metrics and DOCKER events",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/sematext_agent.png",
+      "platform": "linux",
+      "repository": {
+        "url": "https://github.com/mnt/templates",
+        "stackfile": "stacks/sematext-agent-DOCKER/DOCKER-stack.yml"
+      },
+      "env": [
+        {
+          "name": "LOGSENE_TOKEN",
+          "label": "Logs token"
+        },
+        {
+          "name": "SPM_TOKEN",
+          "label": "SPM monitoring token"
+        }
+      ]
+    },
+    {
+      "title": "Datadog agent",
+      "type": 2,
+      "categories": [
+        "Monitoring"
+      ],
+      "description": "Collect events and metrics",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/datadog_agent.png",
+      "platform": "linux",
+      "repository": {
+        "url": "https://github.com/mnt/templates",
+        "stackfile": "stacks/datadog-agent/DOCKER-stack.yml"
+      },
+      "env": [
+        {
+          "name": "API_KEY",
+          "label": "Datadog API key"
+        }
+      ]
+    },
+    {
+      "type": 4,
+      "title": "Wordpress",
+      "description": "Wordpress setup with a MySQL database",
+      "note": "Deploys a Wordpress instance connected to a MySQL database.",
+      "stackfile": "https://raw.githubusercontent.com/mnt/templates/master/stacks/wordpress/edge/DOCKER-stack.yml"
+    },
+    {
+      "type": 4,
+      "title": "CockroachDB",
+      "description": "CockroachDB cluster",
+      "note": "Deploys an insecure CockroachDB cluster, please refer to <a href=\"https://www.cockroachlabs.com/docs/stable/orchestrate-cockroachdb-with-DOCKER-swarm.html\" target=\"_blank\">CockroachDB documentation</a> for production deployments.",
+      "stackfile": "https://raw.githubusercontent.com/mnt/templates/master/stacks/cockroachdb/edge/DOCKER-stack.yml"
+    },
+    {
+      "type": 4,
+      "title": "Softing EdgeConnector modbus",
+      "description": "Connect Modbus TCP Sensors/PLCs and provide the data via OPC UA and MQTT",
+      "note": "Connect Modbus TCP Sensors/PLCs and provide the data via OPC UA and MQTT",
+      "stackfile": "https://raw.githubusercontent.com/mnt/templates/master/stacks/softing-edgeconnector-modbus/DOCKER-compose.yml"
+    },
+    {
+      "type": 3,
+      "title": "FDO",
+      "description": "FDO",
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/intel.png",
+      "repository": {
+        "url": "https://github.com/mnt/templates",
+        "stackfile": "stacks/fdo/DOCKER-stack.yml"
+      },
+      "env": [
+        {
+          "name": "owner_api_user",
+          "label": "API Username"
+        },
+        {
+          "name": "owner_api_password",
+          "label": "API Password"
+        }
+      ]
+    },
+    {
+      "type": 3,
+      "title": "Dokku",
+      "description": "Dokku setup as a compose file",
+      "categories": [
+        "PaaS"
+      ],
+      "platform": "linux",
+      "logo": "",
+      "repository": {
+        "url": "https://github.com/mnt/templates",
+        "stackfile": "stacks/dokku/DOCKER-compose.yml"
+      },
+      "env": [
+        {
+          "name": "VERSION",
+          "label": "Dokku version",
+          "description": "Version of Dokku to use ('latest' if empty)",
+          "default": "latest"
+        },
+        {
+          "name": "DOKKU_HOSTNAME",
+          "label": "Dokku hostname",
+          "description": "Global hostname to be registered by Dokku"
+        },
+        {
+          "name": "VOLUME_PATH",
+          "label": "Dokku volume path",
+          "description": "Host path to be bound to /mnt/dokku (`/var/lib/dokku` if empty)",
+          "default": "/var/lib/dokku"
+        },
+        {
+          "name": "DOKKU_HOST_ROOT",
+          "label": "Dokku host root",
+          "description": "Image build cache path. Generally set to <data dir> + '/home/dokku'",
+          "default": "/var/lib/dokku/home/dokku"
+        },
+        {
+          "name": "SSH_PORT",
+          "label": "SSH port",
+          "description": "Host port to expose SSH port of Dokku (22 if empty)",
+          "default": "22"
+        },
+        {
+          "name": "HTTP_PORT",
+          "label": "HTTP port",
+          "description": "Host port to expose HTTP port of Dokku (80 if empty)",
+          "default": "80"
+        },
+        {
+          "name": "HTTPS_PORT",
+          "label": "HTTPS port",
+          "description": "Host port to expose HTTPS port of Dokku (443 if empty)",
+          "default": "443"
+        }
+      ]
+    },
+    {
+      "type": 2,
+      "title": "LiveSwitch",
+      "description": "A basic LiveSwitch stack with gateway, caching, database and media server",
+      "categories": [
+        "media"
+      ],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/liveswitch.png",
+      "repository": {
+        "url": "https://github.com/mnt/templates",
+        "stackfile": "stacks/liveswitch/DOCKER-stack.yml"
+      },
+      "env": [
+        {
+          "name": "POSTGRES_PASSWORD",
+          "label": "Postgres password"
+        }
+      ]
+    },
+    {
+      "type": 3,
+      "title": "LiveSwitch",
+      "description": "A basic LiveSwitch compose with gateway, caching, database and media server",
+      "categories": [
+        "media"
+      ],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/liveswitch.png",
+      "repository": {
+        "url": "https://github.com/mnt/templates",
+        "stackfile": "stacks/liveswitch/DOCKER-compose.yml"
+      },
+      "env": [
+        {
+          "name": "POSTGRES_PASSWORD",
+          "label": "Postgres password"
+        }
+      ]
+    },
+    {
+      "type": 3,
+      "title": "TOSIBOX Lock for Container",
+      "description": "Lock for Container brings secure connectivity inside your industrial IoT devices",
+      "categories": [
+        "edge"
+      ],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/tosibox.png",
+      "repository": {
+        "url": "https://github.com/mnt/templates",
+        "stackfile": "stacks/tosibox/DOCKER-compose.yml"
+      },
+      "env": [
+        {
+          "name": "LICENSE_KEY",
+          "label": "License key"
+        }
+      ]
+    }
+  ]
+}
